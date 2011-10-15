@@ -1,0 +1,12 @@
+body 
+{
+    padding-top: 60px;
+}
+
+.nav-logo 
+{
+    width:40px;
+    height:40px;
+    float:left;
+    padding-right:10px;
+}
