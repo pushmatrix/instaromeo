@@ -10,3 +10,37 @@ body
     float:left;
     padding-right:10px;
 }
+
+.wiz-container 
+{
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -o-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    border-radius: 7px;
+    -moz-box-shadow: #000 0px 1px 2px;
+    -webkit-box-shadow: #000 0px 1px 2px;
+    -o-box-shadow: #000 0px 1px 2px;
+    box-shadow: #000 0px 1px 2px;
+    background: #262626;
+}
+
+.wiz-nav 
+{
+    background: white url('http://static2.metalabdesign.com/images/screenshots-container-bottom.png') repeat-x top left;
+    -moz-border-radius: 0px 0px 7px 7px;
+    -webkit-border-radius: 0px 0px 7px 7px;
+    -o-border-radius: 0px 0px 7px 7px;
+    -ms-border-radius: 0px 0px 7px 7px;
+    -khtml-border-radius: 0px 0px 7px 7px;
+    border-radius: 0px 0px 7px 7px;
+    position: relative;
+    z-index: 75;
+    height:40px;
+}
+
+.wiz-content
+{
+    height:500px;
+}
