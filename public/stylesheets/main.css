@@ -1,7 +1,11 @@
+html
+{
+  background: black;
+}
 body 
 {
     padding-top: 60px;
-    background: #222;
+    background: black;
 }
 
 .nav-logo 
