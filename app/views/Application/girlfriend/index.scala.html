@@ -2,29 +2,37 @@
 
 @main(title) {
   	<img src="@asset("public/images/female.png")"/>
-  	<img class="inactive" src="@asset("public/images/anniversary.png")"/>
-  	<img class="inactive" src="@asset("public/images/birthday.png")"/>
-  	<img class="inactive" src="@asset("public/images/surprise.png")"/>
-  	<img class="inactive" src="@asset("public/images/calendar.png")"/>
-  	<img class="inactive" src="@asset("public/images/checkout.png")"/>
+  	<img id="prog-ico-anniversary" class="inactive" src="@asset("public/images/anniversary.png")"/>
+  	<img id="prog-ico-birthday" class="inactive" src="@asset("public/images/birthday.png")"/>
+  	<img id="prog-ico-surprise" class="inactive" src="@asset("public/images/surprise.png")"/>
+  	<img id="prog-ico-calendar" class="inactive" src="@asset("public/images/calendar.png")"/>
+  	<img id="prog-ico-checkout" class="inactive" src="@asset("public/images/checkout.png")"/>
   
 } {
-    <div id="slider">
-      <div>@views.Application.girlfriend.html.name()</div>
-      <div>@views.Application.girlfriend.html.aniversary()</div>
-      <div>@views.Application.girlfriend.html.birthday()</div>
-      <div>@views.Application.girlfriend.html.random()</div>
-	  <div>@views.Application.girlfriend.html.surprise()</div>
-	  <div>@views.Application.girlfriend.html.order()</div>
+    <div id="slider1">
+      <div class="wiz-slide">@views.Application.girlfriend.html.name()</div>
+      <div class="wiz-slide"> @views.Application.girlfriend.html.aniversary()</div>
+      <div class="wiz-slide"> @views.Application.girlfriend.html.birthday()</div>
+      <div class="wiz-slide"> @views.Application.girlfriend.html.random()</div>
+	  <div class="wiz-slide"> @views.Application.girlfriend.html.surprise()</div>
+	  <div class="wiz-slide"> @views.Application.girlfriend.html.order()</div>
     </div>
     
     <script>
     $(function(){
-      var slider = $('#slider').bxSlider({
+      slider = $('#slider1').bxSlider({
         mode: 'fade',
         controls: false
       });
       
+    });
+    
+    $(function(){
+      $('.next').click(function(){
+          slider.goToNextSlide();
+          $(".inactive").first().removeClass("inactive");
+          return false;
+      });
     });
     
     </script>
