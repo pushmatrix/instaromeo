@@ -25,16 +25,12 @@
         controls: false
       });
       
+       $('.next').click(function(){
+            slider.goToNextSlide();
+            $(".inactive").first().removeClass("inactive");
+            return false;
+        });
     });
-    
-    $(function(){
-      $('.next').click(function(){
-          slider.goToNextSlide();
-          $(".inactive").first().removeClass("inactive");
-          return false;
-      });
-    });
-    
     </script>
     
 }

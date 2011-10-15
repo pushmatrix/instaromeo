@@ -104,18 +104,27 @@
 }
 
 /* Weekends */
-.gldp-android-sat, .gldp-android-sat-hover
+.gldp-android-sat
 {
 	background-color:#000;
 	color:#00afff;
 	border:solid 1px #000;
+	cursor:pointer;
 }
 
-.gldp-android-sun, .gldp-android-sun-hover
+.gldp-android-sun
 {
 	background-color:#000;
 	color:#ff4f00;
 	border:solid 1px #000;
+}
+
+.gldp-android-sun-hover, .gldp-android-sat-hover
+{
+    background-color:#000;
+	color:#fff;
+	border:solid 1px #00afff;
+	cursor:pointer;
 }
 
 /* Non-selectable day.  Includes: previous/next month days and days that fall in the allowOld and endDate conditions */
