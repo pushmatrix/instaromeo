@@ -1,15 +1,21 @@
 @(title:String)
 
 @main(title) {
-  <a id="go-prev" href="#">PREV</a>
-  <a id="go-next" href="#">NEXT</a>
+  	<img src="@asset("public/images/female.png")"/>
+  	<img class="inactive" src="@asset("public/images/anniversary.png")"/>
+  	<img class="inactive" src="@asset("public/images/birthday.png")"/>
+  	<img class="inactive" src="@asset("public/images/surprise.png")"/>
+  	<img class="inactive" src="@asset("public/images/calendar.png")"/>
+  	<img class="inactive" src="@asset("public/images/checkout.png")"/>
+  
 } {
-    <h1>TESTing</h1>
     <div id="slider">
-      <div>Slide one content</div>
-      <div>Slide two content</div>
-      <div>Slide three content</div>
-      <div>And so on...</div>
+      <div>@views.Application.girlfriend.html.name()</div>
+      <div>@views.Application.girlfriend.html.aniversary()</div>
+      <div>@views.Application.girlfriend.html.birthday()</div>
+      <div>@views.Application.girlfriend.html.random()</div>
+	  <div>@views.Application.girlfriend.html.surprise()</div>
+	  <div>@views.Application.girlfriend.html.order()</div>
     </div>
     
     <script>
@@ -19,15 +25,6 @@
         controls: false
       });
       
-      $('#go-prev').click(function(){
-          slider.goToPreviousSlide();
-          return false;
-        });
-      
-      $('#go-next').click(function(){
-          slider.goToPreviousSlide();
-          return false;
-        });
     });
     
     </script>

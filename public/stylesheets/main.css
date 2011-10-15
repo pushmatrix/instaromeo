@@ -45,9 +45,22 @@ body
     height:500px;
 }
 
-#slider div
+.wiz-controls
 {
-  width: 450px;
-  height: 400px;
-  background: orange;
+    margin: 0px auto;
+    width: 303px;
+}
+.wiz-controls img 
+{
+    width:32px;
+    height:32px;
+    float:left;
+    padding-top:5px;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.inactive
+{
+    opacity:0.4;
 }
