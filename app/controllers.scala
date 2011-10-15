@@ -8,7 +8,7 @@ object Application extends Controller {
     import views.Application._
     
     def index = {
-        html.index("instaRomeo | Just Add Us")
+        girlfriend.html.index("instaRomeo | Just Add Us")
     }
     
 }

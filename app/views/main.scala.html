@@ -1,4 +1,4 @@
-@(title:String = "")(body: => Html)
+@(title:String = "")(controls: => Html)(body: => Html)
 
 <!DOCTYPE html>
 <html>
@@ -36,7 +36,7 @@
 				</div>
 				<div class="wiz-nav">
 					<div class="wiz-controls">
-						
+						@controls
 					</div>
 				</div>
 			</div>
