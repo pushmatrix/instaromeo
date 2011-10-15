@@ -44,3 +44,10 @@ body
 {
     height:500px;
 }
+
+#slider div
+{
+  width: 450px;
+  height: 400px;
+  background: orange;
+}

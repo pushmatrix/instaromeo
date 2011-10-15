@@ -1,11 +1,35 @@
 @(title:String)
 
 @main(title) {
-	
+  <a id="go-prev" href="#">PREV</a>
+  <a id="go-next" href="#">NEXT</a>
 } {
+    <h1>TESTing</h1>
+    <div id="slider">
+      <div>Slide one content</div>
+      <div>Slide two content</div>
+      <div>Slide three content</div>
+      <div>And so on...</div>
+    </div>
     
-    <ul>
-		<li></li>
-	</ul>
+    <script>
+    $(function(){
+      var slider = $('#slider').bxSlider({
+        mode: 'fade',
+        controls: false
+      });
+      
+      $('#go-prev').click(function(){
+          slider.goToPreviousSlide();
+          return false;
+        });
+      
+      $('#go-next').click(function(){
+          slider.goToPreviousSlide();
+          return false;
+        });
+    });
+    
+    </script>
     
 }
