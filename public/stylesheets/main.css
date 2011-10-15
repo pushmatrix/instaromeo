@@ -1,6 +1,7 @@
 body 
 {
     padding-top: 60px;
+    background: #222;
 }
 
 .nav-logo 
@@ -24,6 +25,8 @@ body
     -o-box-shadow: #000 0px 1px 2px;
     box-shadow: #000 0px 1px 2px;
     background: #262626;
+    border: 1px solid #444;
+    overflow: hidden;
 }
 
 .wiz-nav 
@@ -43,12 +46,13 @@ body
 .wiz-content
 {
     height:500px;
+    background: url('/public/images/background.png');
 }
 
 .wiz-controls
 {
     margin: 0px auto;
-    width: 303px;
+    width: 320px;
 }
 .wiz-controls img 
 {
