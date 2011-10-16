@@ -8,6 +8,11 @@ body
     background: black;
 }
 
+h2 
+{
+  color:#FFF;  
+}
+
 .nav-logo 
 {
     width:40px;
@@ -72,3 +77,52 @@ body
 {
     opacity:0.4;
 }
+
+.wiz-slide
+{
+    width:939px;
+    height:500px;
+    color:#FFF;
+}
+
+#nameForm
+{
+    margin-top:180px;
+    margin-left:165px;
+}
+
+#annivForm
+{
+    margin-top:180px;
+    margin-left:165px;
+}
+
+.wiz-slide input 
+{
+    width:500px;
+    height:50px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+    float:left;
+    font-size:3.5em;
+}
+
+.wiz-slide .btn 
+{
+    height:46px;
+    width:80px;
+    font-size:2.5em;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+    float:left;
+}
+
+
