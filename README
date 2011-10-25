@@ -12,7 +12,13 @@ createuser -sPE instaromeo    (*note: instaromeo is the name of the user)
 Console for the db:
 psql instaromeo
 
+To connect to the db:
+  Goto localhost:9000/@db
+  enter jdbc:postgresql://localhost/instaromeo
 
+
+docs:
+http://www.playframework.org/documentation/api/1.2.3/play%2Fdata%2Fvalidation%2FValidation.html
 
 
 **notes:
