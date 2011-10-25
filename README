@@ -1,1 +1,20 @@
 After checking out the project, make sure to run `play dependencies`.
+
+Running the server with postgres:
+pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+
+Creating the database:
+createdb instaromeo
+
+Create the root role
+createuser -sPE instaromeo    (*note: instaromeo is the name of the user)
+
+Console for the db:
+psql instaromeo
+
+
+
+
+**notes:
+
+show tables in postgres is \dt
