@@ -21,5 +21,9 @@ show tables in postgres is \dt
 
 scala bundle for TextMate:
 
-git clone git://github.com/mads379/scala.tmbundle.git
-open scala.tmbundle.git
+    git clone git://github.com/mads379/scala.tmbundle.git
+    open scala.tmbundle.git
+    
+Play Cheat Sheet:
+
+    http://playcheatsheet.appspot.com/show/ArtemMedeu/armed/play-cheatsheets
