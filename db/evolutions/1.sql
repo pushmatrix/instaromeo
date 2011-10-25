@@ -25,6 +25,7 @@ CREATE TABLE FlowerOrder (
     senderEmail varchar(100) NOT NULL,
     senderName varchar(50) NOT NULL,
     senderAddress bigint REFERENCES Address(id),
+    senderPhone varchar(10) NOT NULL,
     recipientName varchar(50) NOT NULL,
     recipientPhone varchar(10) NOT NULL,
     created_at timestamp NOT NULL,
