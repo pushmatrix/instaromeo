@@ -34,7 +34,6 @@
             typewatch(function () {
                 if (Date.parse($("#anniversary").val()) !== null)
                 {
-                    console.log(Date.parse($("#anniversary").val()));
                     $("#anniversary").glDatePicker("setSelectedDate", Date.parse($("#anniversary").val()).set({year: 2012}));
                     $("#anniversary").glDatePicker("gotoSelectedDate"); 
                 }
