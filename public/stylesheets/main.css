@@ -1,7 +1,12 @@
+html, .container 
+{
+    background-color: #222;
+}
+
 body 
 {
     padding-top: 60px;
-    background: #222;
+    background-color: #222;
 }
 
 h2 
