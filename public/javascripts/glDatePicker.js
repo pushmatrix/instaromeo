@@ -272,7 +272,7 @@
 			if(!settings.showPrevNext) { showP = showN = false; }
 
 			// Build the html for the control
-			var titleMonthYear = monthNames[theDate.getMonth()];
+			var titleMonthYear = monthNames[theDate.getMonth()]+" "+theDate.getFullYear();
 			var html =
 				"<div class='**'>"+
 					"<table>"+

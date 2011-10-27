@@ -20,6 +20,22 @@
     
     <script>
     $(function(){
+      
+      instaromeo_order = {
+          gfName: "",
+          deliveries: [{
+              type: "valentines", 
+              delivery_date: Date.parse("February 14")
+          }],
+          addDeliveryFromDatePicker: function(delivery_type, datepicker_id){
+               var delivery = {
+                   type: delivery_type,
+                   delivery_date: Date.parse($("#" + datepicker_id).val())
+               };
+               instaromeo_order.deliveries.push(delivery);
+          }
+      };
+      
       slider = $('#slider1').bxSlider({
         mode: 'fade',
         controls: false
@@ -31,11 +47,20 @@
             return false;
         });
         
+        $("#annivNext").click(function(){
+            instaromeo_order.addDeliveryFromDatePicker("anniversary", "anniversary");
+        });
+        
+        $("#birthdayNext").click(function(){
+            instaromeo_order.addDeliveryFromDatePicker("birthday", "birthday");
+        });
+        
+        
         $(".datepicker").glDatePicker(
           {
             cssName: "android",
-            startDate: new Date("January 1 2012"),
-            endDate: new Date("December, 30 2012"),
+            startDate: new Date(Date.parse("Today")),
+            endDate: new Date(Date.parse("Yesterday").addYears(1)),
             allowOld: false,
             position: "fixed",
             onChange: function(target, newDate)
@@ -57,15 +82,15 @@
               }
               // executed only 500 ms after the last keyup event.
               }, 500);
-            });
+          });
 
-            var typewatch = (function(){
-              var timer = 0;
-              return function(callback, ms){
-                clearTimeout (timer);
-                timer = setTimeout(callback, ms);
-              }  
-              })();
+          var typewatch = (function(){
+                var timer = 0;
+                return function(callback, ms){
+                    clearTimeout (timer);
+                    timer = setTimeout(callback, ms);
+                }  
+                })();
         
     });
     </script>
