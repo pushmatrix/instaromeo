@@ -61,8 +61,9 @@ ALTER SEQUENCE delivery_seq OWNED BY Delivery.id;
  
 # --- !Downs
  
-DROP TABLE FlowerOrder;
+
 DROP TABLE Delivery;
+DROP TABLE FlowerOrder;
 DROP TABLE Address;
 DROP TABLE PriceScheme;
 
