@@ -7,7 +7,7 @@ import play.db.anorm.SqlParser._
 import play.db.anorm.defaults._
 import play.data.validation.Annotations._
 
-case class Address(
+case class PriceScheme(
     @Required @MaxSize(30) address1: String, 
     @MaxSize(30) address2: String,
     @Required @MaxSize(30) city: String,
@@ -16,4 +16,4 @@ case class Address(
     @Required @MaxSize(6) @MinSize(5) zip: String
 )
 
-object Address extends Magic[Address]
+object PriceScheme extends Magic[PriceScheme]

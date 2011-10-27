@@ -1,24 +1,20 @@
 package models
  
-import java.util._
+import java.util.{Date}
  
-import play.db.jpa._
-import play.db.jpa.Annotations._
+import play.db.anorm._
+import play.db.anorm.SqlParser._
+import play.db.anorm.defaults._
 import play.data.validation.Annotations._
 
-@Entity
-class Delivery(
+case class Delivery(
+    @Required order: Integer,
+    @MaxSize(200) cardNote: String,
+    @MaxSize(200) specialInstructions: String,
+    @Required @InFuture deliveryDate: Date,
+    @Required priceScheme: Integer,
+    @Required orderPlaced: Boolean,
+    @Required amountSpent: Double   
+)
 
-    @Email
-    @Required
-    var email: String,
-    
-    @Required
-    var fullname: String
-
-) extends Model {
-    var isAdmin = false
-    
-    override def toString() = email  
- 
-}
+object Delivery extends Magic[Delivery]

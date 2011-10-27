@@ -48,6 +48,17 @@
                };
 
                this.addDelivery(delivery);      
+          },
+          addRandomDelivery: function(){
+              var date = Date.parse(Math.ceil(Math.random()*12) + "/" + Math.ceil(Math.random()*29));
+              if(date.compareTo(Date.parse("Today")) < 0){
+                  date.addYears(1);
+              }
+              var delivery = {
+                  type: "random",
+                  delivery_date: date 
+              };
+              this.addDelivery(delivery); 
           }
       };
       
@@ -123,15 +134,17 @@
             instaromeo_order.removeDelivery($(this).parent().attr("id").split("_")[1]);
           });
           
-          $(".datepicker").keypress(function(){
-            typewatch(function () {
-              if (Date.parse($(".datepicker").val()) !== null)
+          $(".datepicker").live('keyup',function(){
+              if (Date.parse($(this).val()) !== null)
               {
-                $(".datepicker").glDatePicker("setSelectedDate", Date.parse($(".datepicker").val()).set({year: 2012}));
-                $(".datepicker").glDatePicker("gotoSelectedDate"); 
+                var newDate = Date.parse($(this).val());
+                if(newDate.compareTo(Date.parse("Today")) < 0){
+                      newDate.addYears(1);
+                }
+                $(this).glDatePicker("setSelectedDate", newDate);
+                $(this).glDatePicker("gotoSelectedDate"); 
               }
-              // executed only 500 ms after the last keyup event.
-              }, 500);
+    
           });
 
           var typewatch = (function(){

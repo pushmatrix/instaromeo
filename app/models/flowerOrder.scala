@@ -6,11 +6,12 @@ import play.db.anorm.defaults._
 import play.data.validation.Annotations._
 
 case class FlowerOrder(
-    @Email senderEmail: String,
-    senderName: String,
-    senderAddress: Integer,
-    recipientName: String,
-    @Required recipientPhone: String
+    @Required @Email @MaxSize(100) senderEmail: String,
+    @Required @MaxSize(50) senderName: String,
+    @Required @MaxSize(10) senderPhone: String,
+    @Required senderAddress: Integer,
+    @Required @MaxSize(50) recipientName: String,
+    @Required @MaxSize(10) recipientPhone: String
 )
 
 object FlowerOrder extends Magic[FlowerOrder]
