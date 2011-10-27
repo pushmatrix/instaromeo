@@ -8,6 +8,7 @@ import play.db.anorm.defaults._
 import play.data.validation.Annotations._
 
 case class Delivery(
+    id: Pk[Long], 
     @Required order: Integer,
     @MaxSize(200) cardNote: String,
     @MaxSize(200) specialInstructions: String,
