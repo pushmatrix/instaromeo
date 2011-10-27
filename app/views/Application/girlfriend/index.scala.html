@@ -14,38 +14,56 @@
       <div class="wiz-slide"> @views.Application.girlfriend.html.aniversary()</div>
       <div class="wiz-slide"> @views.Application.girlfriend.html.birthday()</div>
       <div class="wiz-slide"> @views.Application.girlfriend.html.random()</div>
-	  <div class="wiz-slide"> @views.Application.girlfriend.html.order()</div>
+	    <div class="wiz-slide"> @views.Application.girlfriend.html.order()</div>
+	    <div class="wiz-slide"> @views.Application.girlfriend.html.checkout()</div>
+	    <div class="wiz-slide"> @views.Application.girlfriend.html.confirm()</div>
+	    <div class="wiz-slide"> @views.Application.girlfriend.html.congrats()</div>
     </div>
     
     <script>
     $(function(){
-      
+      deliveryTemplate = $("#deliveries table tr")[0].outerHTML;
+          
       instaromeo_order = {
           gfName: "",
-          deliveries: [{
-              type: "valentines", 
-              delivery_date: Date.parse("February 14")
-          }],
+          deliveries: [],
+          addDelivery: function(delivery) {
+            instaromeo_order.deliveries.push(delivery);
+            
+            var deliveryHTML = $(deliveryTemplate);
+            deliveryHTML.find(".icon img").attr("src", "/public/images/" + delivery.type + ".png");
+            deliveryHTML.find(".date-text").text(delivery.date.toString('yyyy-MM-dd'));
+            deliveryHTML.attr('id', 'delivery_' + instaromeo_order.deliveries.length);
+            deliveryHTML.show();
+            $("#deliveries table").append(deliveryHTML[0].outerHTML);
+          },
+          removeDelivery: function(id) {
+            instaromeo_order.deliveries[id] = null;
+            $("#delivery_" + id).remove();
+          },
           addDeliveryFromDatePicker: function(delivery_type, datepicker_id){
                var delivery = {
                    type: delivery_type,
-                   delivery_date: Date.parse($("#" + datepicker_id).val())
+                   date: Date.parse($("#" + datepicker_id).val())
                };
-               instaromeo_order.deliveries.push(delivery);
-          },
-          
-          addRandomDelivery: function(){
-              var date = Date.parse(Math.ceil(Math.random()*12) + "/" + Math.ceil(Math.random()*29));
-              if(date.compareTo(Date.parse("Today")) < 0){
-                  date.addYears(1);
-              }
-              var delivery = {
-                  type: "random",
-                  delivery_date: date 
-              };
-              instaromeo_order.deliveries.push(delivery);
+
+               this.addDelivery(delivery);      
           }
       };
+      
+      // initialize common dates
+      instaromeo_order.addDelivery({
+          type: "valentines", 
+          date: Date.parse("February 14")
+      });
+      
+      $('#add-delivery').click(function(){
+        var delivery = {
+          type: 'surprise',
+          date: new Date()
+        };
+        instaromeo_order.addDelivery(delivery);
+      });
       
       slider = $('#slider1').bxSlider({
         mode: 'fade',
@@ -99,7 +117,12 @@
               );
             }
           });
-
+          
+          $(".remove").live('click',function(ev){
+            ev.preventDefault();
+            instaromeo_order.removeDelivery($(this).parent().attr("id").split("_")[1]);
+          });
+          
           $(".datepicker").keypress(function(){
             typewatch(function () {
               if (Date.parse($(".datepicker").val()) !== null)
