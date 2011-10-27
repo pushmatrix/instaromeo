@@ -86,13 +86,7 @@ h2
     color:#FFF;
 }
 
-#nameForm
-{
-    margin-top:180px;
-    margin-left:165px;
-}
-
-#annivForm
+.single-field-form, .yes-no-form
 {
     margin-top:180px;
     margin-left:165px;
@@ -116,7 +110,24 @@ h2
 {
     height:46px;
     width:80px;
+    text-align:center;
     font-size:2.5em;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.div-checkbox {
+    width: 50px;
+    height:35px;
+    color: #000;
+    padding-top:15px;
+    text-align:center;
+    font-size:3.5em;
+    background-color:#FFF;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;
@@ -126,4 +137,24 @@ h2
     float:left;
 }
 
+.yes-no-form{
+    margin-left:230px;
+}
 
+.yes-no-form div{
+    width:400px;
+    text-align:center;
+}
+
+.left{
+    float:left;
+}
+
+.right{
+    float:right;
+}
+
+#randomNextYes{
+    margin-left:25px;
+    margin-right:40px;
+}

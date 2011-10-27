@@ -4,7 +4,7 @@
   	<img src="@asset("public/images/female.png")"/>
   	<img id="prog-ico-anniversary" class="inactive" src="@asset("public/images/anniversary.png")"/>
   	<img id="prog-ico-birthday" class="inactive" src="@asset("public/images/birthday.png")"/>
-  	<!--img id="prog-ico-surprise" class="inactive" src="@asset("public/images/surprise.png")"/-->
+  	<img id="prog-ico-surprise" class="inactive" src="@asset("public/images/surprise.png")">
   	<img id="prog-ico-calendar" class="inactive" src="@asset("public/images/calendar.png")"/>
   	<img id="prog-ico-checkout" class="inactive" src="@asset("public/images/checkout.png")"/>
   
@@ -13,9 +13,8 @@
       <div class="wiz-slide">@views.Application.girlfriend.html.name()</div>
       <div class="wiz-slide"> @views.Application.girlfriend.html.aniversary()</div>
       <div class="wiz-slide"> @views.Application.girlfriend.html.birthday()</div>
-      <!--div class="wiz-slide"> @views.Application.girlfriend.html.random()</div-->
-	    <!--div class="wiz-slide"> @views.Application.girlfriend.html.surprise()</div-->
-	    <div class="wiz-slide"> @views.Application.girlfriend.html.order()</div>
+      <div class="wiz-slide"> @views.Application.girlfriend.html.random()</div>
+	  <div class="wiz-slide"> @views.Application.girlfriend.html.order()</div>
     </div>
     
     <script>
@@ -33,6 +32,18 @@
                    delivery_date: Date.parse($("#" + datepicker_id).val())
                };
                instaromeo_order.deliveries.push(delivery);
+          },
+          
+          addRandomDelivery: function(){
+              var date = Date.parse(Math.ceil(Math.random()*12) + "/" + Math.ceil(Math.random()*29));
+              if(date.compareTo(Date.parse("Today")) < 0){
+                  date.addYears(1);
+              }
+              var delivery = {
+                  type: "random",
+                  delivery_date: date 
+              };
+              instaromeo_order.deliveries.push(delivery);
           }
       };
       
@@ -40,6 +51,15 @@
         mode: 'fade',
         controls: false
       });
+      
+      function toggleCheck(checkId){
+          var checkbox =  $("#" + checkId);
+          if (checkbox.is(":empty")){
+              checkbox.append("✔");
+          } else {
+              checkbox.empty();
+          }
+      }
       
        $('.next').click(function(){
             slider.goToNextSlide();
@@ -55,6 +75,13 @@
             instaromeo_order.addDeliveryFromDatePicker("birthday", "birthday");
         });
         
+        $("#randomNextYes").click(function(){
+                instaromeo_order.addRandomDelivery();
+        });
+        
+        $(".div-checkbox").click(function(){
+            toggleCheck("chk-random");
+        });
         
         $(".datepicker").glDatePicker(
           {
