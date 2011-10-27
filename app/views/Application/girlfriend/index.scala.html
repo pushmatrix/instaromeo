@@ -30,6 +30,43 @@
             $(".inactive").first().removeClass("inactive");
             return false;
         });
+        
+        $(".datepicker").glDatePicker(
+          {
+            cssName: "android",
+            startDate: new Date("January 1 2012"),
+            endDate: new Date("December, 30 2012"),
+            allowOld: false,
+            position: "fixed",
+            onChange: function(target, newDate)
+            {
+              target.val
+              (
+                (newDate.getMonth() + 1) + "/" +
+                newDate.getDate()
+              );
+            }
+          });
+
+          $(".datepicker").keypress(function(){
+            typewatch(function () {
+              if (Date.parse($(".datepicker").val()) !== null)
+              {
+                $(".datepicker").glDatePicker("setSelectedDate", Date.parse($(".datepicker").val()).set({year: 2012}));
+                $(".datepicker").glDatePicker("gotoSelectedDate"); 
+              }
+              // executed only 500 ms after the last keyup event.
+              }, 500);
+            });
+
+            var typewatch = (function(){
+              var timer = 0;
+              return function(callback, ms){
+                clearTimeout (timer);
+                timer = setTimeout(callback, ms);
+              }  
+              })();
+        
     });
     </script>
     

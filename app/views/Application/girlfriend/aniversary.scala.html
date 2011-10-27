@@ -3,51 +3,10 @@
         <h2>What's Your Anniversary:</h2>
     </div>
     <div class="input">
-        <input type="text" class="xlarge" id="anniversary"/>
+        <input type="text" class="xlarge datepicker" id="anniversary"/>
     </div>
 
     <div id="annivNext" class="btn info next">
         Next
     </div>
 </div>
-
-<script type="text/javascript">
-     $(function(){
-        $("#anniversary").glDatePicker(
-        {
-            cssName: "android",
-            startDate: new Date("January 1 2012"),
-            endDate: new Date("December, 30 2012"),
-            allowOld: false,
-            position: "fixed",
-            onChange: function(target, newDate)
-            {
-                target.val
-                (
-                    (newDate.getMonth() + 1) + "/" +
-                    newDate.getDate()
-                );
-            }
-        });
-        
-        $("#anniversary").keypress(function(){
-            typewatch(function () {
-                if (Date.parse($("#anniversary").val()) !== null)
-                {
-                    $("#anniversary").glDatePicker("setSelectedDate", Date.parse($("#anniversary").val()).set({year: 2012}));
-                    $("#anniversary").glDatePicker("gotoSelectedDate"); 
-                }
-                // executed only 500 ms after the last keyup event.
-            }, 500);
-        });
-        
-        var typewatch = (function(){
-          var timer = 0;
-          return function(callback, ms){
-            clearTimeout (timer);
-            timer = setTimeout(callback, ms);
-          }  
-        })();
-        
-    });
-</script>
