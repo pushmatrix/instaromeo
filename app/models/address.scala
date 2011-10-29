@@ -10,7 +10,7 @@ import play.data.validation.Annotations._
 case class Address(
     id: Pk[Long], 
     @Required @MaxSize(30) address1: String, 
-    @MaxSize(30) address2: String,
+    @MaxSize(30) address2: Option[String],
     @Required @MaxSize(30) city: String,
     @Required @MaxSize(2) @MinSize(2) state: String,
     @Required @MaxSize(2) @MinSize(2) country: String,

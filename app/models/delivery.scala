@@ -10,8 +10,8 @@ import play.data.validation.Annotations._
 case class Delivery(
     id: Pk[Long], 
     @Required order: Integer,
-    @MaxSize(200) cardNote: String,
-    @MaxSize(200) specialInstructions: String,
+    @MaxSize(200) cardNote: Optional[String],
+    @MaxSize(200) specialInstructions: Optional[String],
     @Required @InFuture deliveryDate: Date,
     @Required priceScheme: Integer,
     @Required orderPlaced: Boolean,

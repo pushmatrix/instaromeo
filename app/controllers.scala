@@ -19,7 +19,7 @@ object Application extends Controller {
     
         var newAddress = Address(NotAssigned,
                 params.get("senderAddress1"),
-                params.get("senderAddress2"),
+                Option(params.get("senderAddress2")),
                 params.get("senderCity"),
                 params.get("senderState"),
                 params.get("senderCountry"),
