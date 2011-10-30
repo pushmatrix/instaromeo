@@ -37,9 +37,9 @@ ALTER SEQUENCE order_seq OWNED BY FlowerOrder.id;
 CREATE TABLE PriceScheme (
     id bigint NOT NULL DEFAULT nextval('pricescheme_seq'),
     name varchar(255) NOT NULL,
-    chargePrice money NOT NULL, 
-    maxSpend money NOT NULL,
-    minSpend money NOT NULL,
+    chargePrice double precision NOT NULL, 
+    maxSpend double precision NOT NULL,
+    minSpend double precision NOT NULL,
     PRIMARY KEY (id)
 ); 
 
