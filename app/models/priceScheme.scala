@@ -10,9 +10,9 @@ import play.data.validation.Annotations._
 case class PriceScheme(
     id: Pk[Long], 
     @Required name: String,
-    @Required chargePrice: Double, 
-    @Required maxSpend: Double,
-    @Required minSpend: Double
+    @Required @Min(1) chargePrice: Double, 
+    @Required @Min(1) maxSpend: Double,
+    @Required @Min(1) minSpend: Double
 )
 
 object PriceScheme extends Magic[PriceScheme]
