@@ -9,10 +9,10 @@ case class FlowerOrder(
     id: Pk[Long], 
     @Required @Email @MaxSize(100) senderEmail: String,
     @Required @MaxSize(50) senderName: String,
-    @Required @MaxSize(10) senderPhone: String,
+    @Required @MaxSize(10) @MinSize(10) senderPhone: String,
     @Required senderAddress: Long,
     @Required @MaxSize(50) recipientName: String,
-    @Required @MaxSize(10) recipientPhone: String
+    @Required @MaxSize(10) @MinSize(10) recipientPhone: String
 )
 
 object FlowerOrder extends Magic[FlowerOrder]
