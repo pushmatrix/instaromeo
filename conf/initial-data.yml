@@ -1,0 +1,27 @@
+- !!models.PriceScheme
+    id:             !!Id[Long] 1
+    name:           valentines
+    chargePrice:    120.00
+    maxSpend:       100.00
+    minSpend:       80.00
+
+- !!models.PriceScheme
+    id:             !!Id[Long] 2
+    name:           anniversary
+    chargePrice:    120.00
+    maxSpend:       100.00
+    minSpend:       80.00
+
+- !!models.PriceScheme
+    id:             !!Id[Long] 3
+    name:           birthday
+    chargePrice:    70.00
+    maxSpend:       65.00
+    minSpend:       40.00
+    
+- !!models.PriceScheme
+    id:             !!Id[Long] 4
+    name:           everyday
+    chargePrice:    70.00
+    maxSpend:       65.00
+    minSpend:       40.00
