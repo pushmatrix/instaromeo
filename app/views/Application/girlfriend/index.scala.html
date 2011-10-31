@@ -15,31 +15,46 @@
       <div class="wiz-slide"> @views.Application.girlfriend.html.birthday()</div>
       <div class="wiz-slide"> @views.Application.girlfriend.html.random()</div>
 	    <div class="wiz-slide"> @views.Application.girlfriend.html.order()</div>
+	    <div class="wiz-slide"> @views.Application.girlfriend.html.address()</div>
 	    <div class="wiz-slide"> @views.Application.girlfriend.html.checkout()</div>
-	    <div class="wiz-slide"> @views.Application.girlfriend.html.confirm()</div>
 	    <div class="wiz-slide"> @views.Application.girlfriend.html.congrats()</div>
     </div>
     
     <script>
     $(function(){
-      deliveryTemplate = $("#deliveries table tr")[0].outerHTML;
-          
+      deliveryTemplate = $("#deliveries .delivery")[0].outerHTML;
+      dateFormat = 'yyyy-MM-dd';
+      
       instaromeo_order = {
           gfName: "",
           deliveries: [],
           addDelivery: function(delivery) {
+            var id = 'delivery_' + instaromeo_order.deliveries.length;
             instaromeo_order.deliveries.push(delivery);
             
             var deliveryHTML = $(deliveryTemplate);
             deliveryHTML.find(".icon img").attr("src", "/public/images/" + delivery.type + ".png");
-            deliveryHTML.find(".date-text").text(delivery.date.toString('yyyy-MM-dd'));
-            deliveryHTML.attr('id', 'delivery_' + instaromeo_order.deliveries.length);
-            deliveryHTML.show();
-            $("#deliveries table").append(deliveryHTML[0].outerHTML);
+            deliveryHTML.find(".date-text").text(delivery.date.toString(dateFormat));
+            deliveryHTML.attr('id', id);
+            $("#deliveries").append(deliveryHTML[0].outerHTML);
+            
+            // update the deliveryHTML with the actual node in the dom.
+            deliveryHTML = $("#" + id);
+            deliveryHTML.fadeIn();
+            if (delivery.type == "surprise" || delivery.type == "birthday" || delivery.type == "anniversary") {
+              var datepicker = $("#" + id + " .datepicker");
+              datepicker.show();
+              // the date picker has to be initialized after the node is in the dom
+              initDatePicker(datepicker, function(target, newDate)
+              {
+                target.parent().find(".date-text").text(newDate.toString(dateFormat));
+              });
+            }
+    
           },
           removeDelivery: function(id) {
             instaromeo_order.deliveries[id] = null;
-            $("#delivery_" + id).remove();
+            $("#delivery_" + id).fadeOut();
           },
           addDeliveryFromDatePicker: function(delivery_type, datepicker_id){
                var delivery = {
@@ -62,11 +77,6 @@
           }
       };
       
-      // initialize common dates
-      instaromeo_order.addDelivery({
-          type: "valentines", 
-          date: Date.parse("February 14")
-      });
       
       $('#add-delivery').click(function(){
         var delivery = {
@@ -81,15 +91,6 @@
         controls: false
       });
       
-      function toggleCheck(checkId){
-          var checkbox =  $("#" + checkId);
-          if (checkbox.is(":empty")){
-              checkbox.append("✔");
-          } else {
-              checkbox.empty();
-          }
-      }
-      
        $('.next').click(function(){
             slider.goToNextSlide();
             $(".inactive").first().removeClass("inactive");
@@ -100,6 +101,7 @@
             instaromeo_order.addDeliveryFromDatePicker("anniversary", "anniversary");
         });
         
+       // slider.goToSlide(6);
         $("#birthdayNext").click(function(){
             instaromeo_order.addDeliveryFromDatePicker("birthday", "birthday");
         });
@@ -112,23 +114,47 @@
             toggleCheck("chk-random");
         });
         
-        $(".datepicker").glDatePicker(
-          {
-            cssName: "android",
-            startDate: new Date(Date.parse("Today")),
-            endDate: new Date(Date.parse("Yesterday").addYears(1)),
-            allowOld: false,
-            position: "fixed",
-            onChange: function(target, newDate)
-            {
-              target.val
-              (
-                (newDate.getMonth() + 1) + "/" +
-                newDate.getDate()
-              );
-            }
+        $("#purchase").click(function() {
+        //  $(this).hide();
+          $("#purchaseLoading").show();
+          var data = $("#senderInfo, #recipientInfo").serialize();
+          data += "&deliveries=" + JSON.stringify(instaromeo_order.deliveries);
+          $.post("/orders", data).success(function(){
+          //  slider.goToNextSlide();
           });
-          
+        });
+        
+        function initDatePicker(element, onChange) {
+          element.glDatePicker(
+             {
+                cssName: "android",
+                startDate: new Date(Date.parse("Today")),
+                endDate: new Date(Date.parse("Yesterday").addYears(1)),
+                allowOld: false,
+                position: "fixed",
+                onChange: onChange
+              });
+        }
+        
+        $("#modifyOrder").click(function() {
+          slider.goToSlide(4);
+        });
+        $("#modifyAddress").click(function() {
+          slider.goToSlide(5);
+        });
+        $(".datepicker").each(function(){
+          initDatePicker($(this), function(target, newDate)
+          {
+            target.val(newDate.toString(dateFormat));
+          });
+        });
+        
+        // initialize common dates
+        instaromeo_order.addDelivery({
+            type: "valentines", 
+            date: Date.parse("February 14 2012")
+        });
+
           $(".remove").live('click',function(ev){
             ev.preventDefault();
             instaromeo_order.removeDelivery($(this).parent().attr("id").split("_")[1]);

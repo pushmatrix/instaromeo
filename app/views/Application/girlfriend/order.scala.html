@@ -1,23 +1,19 @@
 <h1>Your order</h1>
 
 <div id="deliveries">
-   <table>
-     <tr style="display: none">
-       <td class="icon"><img src="@asset("public/images/anniversary.png")" /></td>
-       <td class="date">
-         <span class="input">
-           <img src="@asset("public/images/calendar.png")" class="xlarge datepicker"/>
-         </span>
-         <span class="date-text">
-          </span>
-       </td>
-       <td class="remove"><a href="#">remove</a></td>
-     </tr>
-   </table>
-  <div id="add-delivery" class="btn info">
-      Add
-  </div>
-  <div id="orderNext" class="btn info next">
-      Checkout
-  </div>
+     <div class="delivery" style="display: none">
+       <span class="icon"><img src="@asset("public/images/anniversary.png")" /></span>
+       <span class="date">
+           <span class="date-text">
+           </span>
+           <span class='datepicker' style="display: none"><a href="#">(Click to edit)</a></span>
+       </span>
+       <span class="remove"><a href="#"><img src="/public/images/trash.gif"/></a></span>
+     </div>
+</div>
+<div id="add-delivery" class="btn info">
+    Add
+</div>
+<div id="orderNext" class="btn info next">
+    Checkout
 </div>

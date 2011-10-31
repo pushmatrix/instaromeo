@@ -84,7 +84,7 @@ body
     margin-left:165px;
 }
 
-.wiz-slide input 
+input.xlarge
 {
     width:500px;
     height:50px;
@@ -100,10 +100,7 @@ body
 
 .wiz-slide .btn 
 {
-    height:46px;
-    width:80px;
     text-align:center;
-    font-size:2.5em;
     -moz-border-radius: 15px;
     -webkit-border-radius: 15px;
     -o-border-radius: 15px;

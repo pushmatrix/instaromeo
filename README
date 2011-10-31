@@ -21,6 +21,10 @@ docs:
 Validation: http://www.playframework.org/documentation/api/1.2.3/play%2Fdata%2Fvalidation%2FValidation.html
 Option Notation: http://www.scala-lang.org/api/rc/scala/Option.html
 Cheat Sheet: http://playcheatsheet.appspot.com/show/ArtemMedeu/armed/play-cheatsheets
+Play scala docs (mildly broken): http://scala.playframework.org/documentation/api/scala-0.9.1/play/utils/Scala$MayErr.html
+
+Sample post request
+$.post("orders",{senderAddress1:"werre",senderCity:"Ottawa",senderState:"On",senderCountry:"CA",senderZip:"123456", senderName:"Daniel B",recipientName:"Andrea B",recipientPhone:"1523423232",senderEmail:"daniel.beauchamp@gmail.com", senderPhone:"1452324324" }).success(function(){console.log('ya')})
 
 **notes:
 
