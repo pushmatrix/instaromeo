@@ -1,0 +1,8 @@
+- !!models.FlowerOrder
+    id:             !!Id[Long] 1
+    senderEmail:    test@test.com
+    senderName:     Peanutbutter
+    senderPhone:    1234567890
+    senderAddress:  1
+    recipientName:  Jelly
+    recipientPhone: 0987654321

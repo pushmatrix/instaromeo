@@ -9,11 +9,11 @@ import play.data.validation.Annotations._
 
 case class Delivery(
     id: Pk[Long], 
-    @Required order: Integer,
+    @Required flowerOrder: Long,
     @MaxSize(200) cardNote: Option[String],
     @MaxSize(200) specialInstructions: Option[String],
     @Required @InFuture deliveryDate: Date,
-    @Required priceScheme: Integer,
+    @Required priceScheme: Long,
     @Required orderPlaced: Boolean,
     @Required amountSpent: Double   
 )

@@ -53,7 +53,7 @@ CREATE TABLE Delivery (
     deliveryDate date NOT NULL,
     priceScheme bigint references PriceScheme(id),
     orderPlaced boolean NOT NULL,
-    amountSpent money,
+    amountSpent double precision NOT NULL,
     PRIMARY KEY (id)
 );
 

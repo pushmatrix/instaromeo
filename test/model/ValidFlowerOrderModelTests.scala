@@ -14,18 +14,14 @@ class ValidFlowerOrderModelTests extends UnitFlatSpec with ShouldMatchers with B
     override def beforeEach() {
         Fixtures.deleteDatabase() //delete all test data between tests
         Validation.clear() //clear all validation errors between tests
+        Yaml[List[Any]]("address.yml").foreach { 
+            _ match {
+                case a:Address => Address.create(a)
+            }
+        }
     }
     
     it should "Create and retrieve a valid flower order" in {
-        var testAddress = Address(Id(1),
-                    "123 Test Street",
-                    Option("unit 456"),
-                    "Testerton",
-                    "ON",
-                    "CA",
-                    "H0H0H0")
-
-        Address.create(testAddress)
         
         var testOrder = FlowerOrder(Id(1),
             "test@test.com",
