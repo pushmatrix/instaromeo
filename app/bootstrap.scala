@@ -8,14 +8,17 @@ import play.data.validation._
         import models._
         import play.test._
         
-        Fixtures.deleteDatabase() //delete all test data between tests
-        Fixtures.delete()
-        Validation.clear() //clear all validation errors between tests
-        Yaml[List[Any]]("initial-data.yml").foreach { 
-            _ match {
-                case a:Address => Address.create(a)
-                case p:PriceScheme => PriceScheme.create(p)
-                case o:FlowerOrder => FlowerOrder.create(o)
+        if(PriceScheme.count().single() == 0) {
+        
+            Fixtures.deleteDatabase() //delete all test data between tests
+            Fixtures.delete()
+            Validation.clear() //clear all validation errors between tests
+            Yaml[List[Any]]("initial-data.yml").foreach { 
+                _ match {
+                    case a:Address => Address.create(a)
+                    case p:PriceScheme => PriceScheme.create(p)
+                    case o:FlowerOrder => FlowerOrder.create(o)
+                }
             }
         }
         
