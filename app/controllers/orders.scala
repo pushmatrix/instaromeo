@@ -84,6 +84,6 @@ object Orders extends Controller {
             
           }
         }      
-        girlfriend.html.congrats()
+        girlfriend.html.index("instaRomeo | Just Add Us")
     }
 }
