@@ -14,4 +14,3 @@ test-result
 eclipse
 server.pid
 modules/*
-conf/application.conf

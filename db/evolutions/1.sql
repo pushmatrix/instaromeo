@@ -2,10 +2,10 @@
 
 # --- !Ups
 
-CREATE SEQUENCE order_seq;
-CREATE SEQUENCE delivery_seq;
-CREATE SEQUENCE address_seq;
-CREATE SEQUENCE pricescheme_seq;
+CREATE SEQUENCE order_seq INCREMENT 1 START 1;
+CREATE SEQUENCE delivery_seq INCREMENT 1 START 1;
+CREATE SEQUENCE address_seq INCREMENT 1 START 1; 
+CREATE SEQUENCE pricescheme_seq INCREMENT 1 START 1; 
 
 CREATE TABLE Address (
     id bigint NOT NULL DEFAULT nextval('address_seq'),
@@ -17,8 +17,6 @@ CREATE TABLE Address (
     zip varchar(6) NOT NULL,
     PRIMARY KEY (id)
 );
-
-ALTER SEQUENCE address_seq OWNED BY Address.id;
 
 CREATE TABLE FlowerOrder (
     id bigint NOT NULL DEFAULT nextval('order_seq'),
@@ -32,8 +30,6 @@ CREATE TABLE FlowerOrder (
     PRIMARY KEY (id)
 );
  
-ALTER SEQUENCE order_seq OWNED BY FlowerOrder.id;
-
 CREATE TABLE PriceScheme (
     id bigint NOT NULL DEFAULT nextval('pricescheme_seq'),
     name varchar(255) NOT NULL,
@@ -42,8 +38,6 @@ CREATE TABLE PriceScheme (
     minSpend double precision NOT NULL,
     PRIMARY KEY (id)
 ); 
-
-ALTER SEQUENCE pricescheme_seq OWNED BY PriceScheme.id;
 
 CREATE TABLE Delivery (
     id bigint NOT NULL DEFAULT nextval('delivery_seq'),
@@ -56,8 +50,6 @@ CREATE TABLE Delivery (
     amountSpent double precision NOT NULL,
     PRIMARY KEY (id)
 );
-
-ALTER SEQUENCE delivery_seq OWNED BY Delivery.id;
  
 # --- !Downs
  
