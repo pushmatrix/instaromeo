@@ -1,0 +1,8 @@
+- !!models.Address
+    id:             !!Id[Long] 1
+    address1:       123 Test Street
+    address2:       
+    city:           Testerton
+    state:          ON
+    country:        CA
+    zip:            H0H0H0

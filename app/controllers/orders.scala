@@ -63,7 +63,7 @@ object Orders extends Controller {
               var deliveryDate = new SimpleDateFormat("yyyy-MM-dd").parse(strDate)
               deliveryDate.setYear(deliveryDate.getYear())
               deliveryDate = new Timestamp(deliveryDate.getTime())
-            
+              System.out.println(priceScheme)
               var newDelivery = Delivery(NotAssigned,
                          newOrder.id(),
                          Option(""),
@@ -72,7 +72,7 @@ object Orders extends Controller {
                          priceScheme.get.id(),
                          false,
                          0.0)
-
+              System.out.println("wefwe")  
               Validation.valid("Delivery", newDelivery)
               if(validation.hasErrors) {
                   Logger.info(validation.errorsMap().toString())

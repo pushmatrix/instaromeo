@@ -9,10 +9,6 @@ import play.data.validation._
         import play.test._
         
         if(PriceScheme.count().single() == 0) {
-        
-            Fixtures.deleteDatabase() //delete all test data between tests
-            Fixtures.delete()
-            Validation.clear() //clear all validation errors between tests
             Yaml[List[Any]]("initial-data.yml").foreach { 
                 _ match {
                     case a:Address => Address.create(a)

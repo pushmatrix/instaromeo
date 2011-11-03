@@ -14,4 +14,8 @@ object Application extends Controller {
     def index = {
         girlfriend.html.index("instaRomeo | Just Add Us")
     }
+    
+    def http404 = {
+        errors.html.http404()
+    }
 }
