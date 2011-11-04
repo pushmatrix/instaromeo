@@ -1,0 +1,189 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="selenium.base" href="http://localhost:9000/" />
+  <title>New Test</title>
+</head>
+<body>
+  <table cellpadding="1" cellspacing="1" border="1">
+    <thead>
+      <tr><td rowspan="1" colspan="3">New Test</td></tr>
+    </thead><tbody>
+      <tr>
+        <td>open</td>
+        <td>/</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>id=gfname</td>
+        <td>Daphne</td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>id=nameNext</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>id=anniversary</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>//div[@id='anniversary-gldp']/div/table/tbody/tr[6]/td[6]/div</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>id=annivNext</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>id=birthday</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>//div[@id='birthday-gldp']/div/table/tbody/tr[5]/td[6]/div</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>id=birthdayNext</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>id=randomNextYes</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>id=orderNext</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=recipientPhone</td>
+        <td>2342342342</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=recipientAddress1</td>
+        <td>180 Maclooo</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=recipientCity</td>
+        <td>Ottawa</td>
+      </tr>
+      <tr>
+        <td>select</td>
+        <td>name=recipientState</td>
+        <td>label=Ontario</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=recipientZip</td>
+        <td>J2M1B2</td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>//div[@id='addressForm']/div[2]/div[2]/div/div[2]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=senderName</td>
+        <td>Dufresne Rogers</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=senderPhone</td>
+        <td>2342342423</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=senderEmail</td>
+        <td>dawe@lol.com</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=senderAddress1</td>
+        <td>23424</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=senderAddress1</td>
+        <td>23424 Newton Dr</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=senderCity</td>
+        <td>Ottawa</td>
+      </tr>
+      <tr>
+        <td>select</td>
+        <td>name=senderState</td>
+        <td>label=Ontario</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=senderZip</td>
+        <td>K1M4B2</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=cardNumber</td>
+        <td>3242342342423423</td>
+      </tr>
+      <tr>
+        <td>select</td>
+        <td>//form[@id='senderInfo']/div/div[2]/div[2]/div/select[2]</td>
+        <td>label=2015</td>
+      </tr>
+      <tr>
+        <td>type</td>
+        <td>name=cvc</td>
+        <td>324</td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>css=div.right.buttons &gt; div.modifyOrder.btn</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>css=#delivery_0 &gt; span.remove.right &gt; a &gt; img</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>id=orderNext</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>//div[@id='addressForm']/div[2]/div[2]/div/div[2]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>click</td>
+        <td>id=purchase</td>
+        <td></td>
+      </tr>
+      
+      <tr>
+         <td>waitForCondition</td>
+         <td>console.log(selenium.browserbot.getUserWindow().instaromeo_order.deliveries); value = selenium.browserbot.getUserWindow().success; value == true</td>
+         <td>5000</td>
+       </tr>
+
+    </tbody></table>
+  </body>
+  </html>

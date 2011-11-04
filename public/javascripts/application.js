@@ -8,6 +8,7 @@ $(document).ready(function(){
    dateFormat = 'MMMM dd, yyyy';
    flowerPrice = 50;
    maxOrderSize = 7;
+   success = false; //variable to make selenium test assertion easier. It becomes true when an order is placed.
    
    
    instaromeo_order = {
@@ -150,6 +151,7 @@ $(document).ready(function(){
        data += "&deliveries=" + JSON.stringify(instaromeo_order.deliveries);
        $.post("/orders", data).success(function() {
          slider.goToNextSlide();
+         success = true;
        }).error(function() {
          // something went wrong, but let's pretend it didn't :p
          slider.goToNextSlide();

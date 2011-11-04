@@ -16,9 +16,10 @@ public class HomePageTests extends FunctionalTest {
         assertContentMatch("When's your next anniversary?",response);
         assertContentMatch("When's her next birthday?",response);
         assertContentMatch("Want some brownie points?",response);
-        assertContentMatch("Your order",response);
-        assertContentMatch("Delivery Details",response);
-        assertContentMatch("Checkout details",response);
+        assertContentMatch("She'll get flowers on the following days",response);
+        assertContentMatch("Where should we send the flowers?",response);
+        assertContentMatch("Billing Information",response);
+        assertContentMatch("Awesome",response);
     }
     
     @Test
