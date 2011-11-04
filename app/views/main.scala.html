@@ -14,20 +14,11 @@
         <script type="text/javascript" src="@asset("public/javascripts/date.js")"></script>
     </head>
     <body>
-		<div class="topbar">
-			<div class="fill">
-				<div class="container">
-					<img class="nav-logo" src="@asset("public/images/favicon.png")"/>
-					<a class="brand" href="#">instaRomeo</a>
-					<ul class="nav">
-						<li class="active">
-							<a href="#">Home</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
 		<div class="container">
+		  <span class="nav-logo">
+		    <img src="@asset("public/images/bouquet.png")"/>
+		    instaRomeo
+		  </span>
 			<div class="wiz-container">
         		<div class="wiz-content">
 					@body
@@ -38,6 +29,9 @@
 					</div>
 				</div>
 			</div>
+			<div id="terms">
+  		  Copyright instaRomeo 2011
+  		</div>
 		</div>
     </body>
 </html>

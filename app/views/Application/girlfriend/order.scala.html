@@ -1,19 +1,39 @@
-<h1>Your order</h1>
-
-<div id="deliveries">
-     <div class="delivery" style="display: none">
-       <span class="icon"><img src="@asset("public/images/anniversary.png")" /></span>
-       <span class="date">
-           <span class="date-text">
-           </span>
-           <span class='datepicker' style="display: none"><a href="#">(Click to edit)</a></span>
-       </span>
-       <span class="remove"><a href="#"><img src="/public/images/trash.gif"/></a></span>
-     </div>
-</div>
-<div id="add-delivery" class="btn info">
-    Add
-</div>
-<div id="orderNext" class="btn info next">
-    Checkout
+<div id="orderForm" class="container">
+  <div class="page-header">
+    <h1>She'll get flowers on the following days</h1>
+  </div>
+  <div class="row">
+    <div class="span8">
+      <div id="deliveries">
+        <div class="delivery alert-message" style="display: none">
+          <span class="icon"><img src="@asset("public/images/anniversary.png")" /></span>
+          <span class="date">
+            <span class="date-text">
+            </span>
+            <span class='datepicker' style="display: none"><a href="#">(Click here to edit)</a></span>
+          </span>
+          <span class="remove right"><a href="#"><img src="/public/images/trash.gif"/></a></span>
+        </div>
+      </div>
+      <div class="right">
+        <div id="add-delivery" class="btn">
+          Add a date
+        </div>
+        <span id="max-orders" style="display: none; float:left">
+          You've reached the max limit of flowers.
+        </span>
+      </div>
+    </div>
+    <div class="span7">
+      <h2>Anything missing?</h2>
+      <p>Nothing says 'I love you' more than sending flowers 'just because'. Press the <i>Add</i> button to pick more dates. </p>
+      <br/>
+      <p>Press <i>Checkout</i> when you're done</p>
+      <br/>
+      <h2>Total: $<span class="total">0</span></h2>
+      <div id="orderNext" class="btn info next">
+        Checkout
+      </div>
+    </div>
+  </div>
 </div>

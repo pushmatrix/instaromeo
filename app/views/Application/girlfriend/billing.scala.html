@@ -1,0 +1,44 @@
+@import views.tags.html._
+
+<div id="billingForm" class="container">
+  <div class="page-header">
+    <h1>Billing Information</h1>
+  </div>
+  <div class="row">
+    <div class="span8">
+      <form id="senderInfo">
+        @textinput("Name", "senderName", "Clifford")
+        @textinput("Phone", "senderPhone", "6132329834")
+        @textinput("Email", "senderEmail", "cliff@cliff.com")
+        @textinput("Address 1", "senderAddress1")
+        @textinput("Address 2", "senderAddress2")
+        @textinput("City", "senderCity", "Ottawa")
+        @countryselect("Country", "senderCountry")
+        @stateselect("Province/State", "senderState")
+        @textinput("Zip Code", "recipientZip", "K2B9M2")
+      </form>
+    </div>
+    <div class="span7">
+      <form>
+        @textinput("Credit Card Number", "cardNumber")
+        @ccexpirationselect("Expiration Date")
+        @textinput("CVC", "cvc")
+      </form>
+      <h2 style="text-align: right">Total: $<span class="total">0</span></h2>
+      <div class="right buttons">
+        <div class="modifyOrder btn">
+          Modify Order
+        </div>
+        <div class="modifyAddress btn ">
+          Modify Shipping Address
+        </div>
+        <div id="purchase" class="btn success">
+          Pay
+        </div>
+      </div>
+      <div id="purchaseLoading" style="display: none" class="right">
+          Purchasing &nbsp;&nbsp;<img src="@asset("public/images/spinner.gif")"/>
+      </div>
+    </div>
+  </div>
+</div>

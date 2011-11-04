@@ -1,34 +1,31 @@
 @import views.tags.html._
-<h1>Delivery Details</h1>
-<div class="container">
+<div id="addressForm" class="container">
+  <div class="page-header">
+    <h1>Where should we send the flowers?</h1>
+  </div>
   <div class="row">
     <div class="span8">
-      <h2>Your Info</h2>
-      <form id="senderInfo">
-        @textinput("Name", "senderName", "Clifford")
-        @textinput("Phone", "senderPhone", "6132329834")
-        @textinput("Email", "senderEmail", "cliff@cliff.com")
-        @textinput("Address 1", "senderAddress1", "150 Clifford Av")
-        @textinput("Address 2", "senderAddress2")
-        @textinput("City", "senderCity", "Ottawa")
-        @textinput("State", "senderState", "On")
-        @textinput("Country", "senderCountry", "CA")
-        @textinput("Zip Code", "senderZip", "K2B9M2")
-      </form>
-    </div>
-    <div class="span8">
-      <h2>Delivery Address</h2>
       <form id="recipientInfo">
         @textinput("Name", "recipientName", "Daphne")
         @textinput("Phone", "recipientPhone", "6132539834")
         @textinput("Address 1", "recipientAddress1", "200 Daphne St")
         @textinput("City", "city", "Ottawa")
-        @textinput("State", "state", "On")
-        @textinput("Country", "country", "CA")
-        @textinput("Zip", "zip", "K3MB4M")
+        @countryselect("Country", "country")
+        @stateselect("Province/State", "state")
+        @textinput("Postal Code/Zip", "zip", "K3MB4M")
+
       </form>
-      <div id="checkoutNext" class="btn info next">
-          Proceed to Payment
+    </div>
+    <div class="span7">
+      <h2>Don't worry.</h2>
+      <p>There will be no mention of instaRomeo when she receives the flowers. Your secret is safe with us :P</p>
+      <div class="right">
+        <div class="btn modifyOrder">
+          Modify Order
+        </div>
+        <div class="btn info next">
+          Next
+        </div>
       </div>
     </div>
   </div>

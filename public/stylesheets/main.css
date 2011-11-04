@@ -1,18 +1,37 @@
-html, .container 
+html
 {
+  background: url('../images/bkg.png');
+}
+
+h1 {
+  margin-bottom: 0px;
 }
 
 body 
 {
-    padding-top: 60px;
+    background: url('../images/bkg.png');
 }
 
-.nav-logo 
+#terms {
+  color: #AA;
+  margin: 0px auto;
+  width: 170px;
+}
+
+.nav-logo img
 {
-    width:40px;
-    height:40px;
-    float:left;
-    padding-right:10px;
+    width:70px;
+    height:70px;
+    position: relative;
+    top: 6px;
+    margin-right: -12px;
+}
+
+.nav-logo
+{
+  color: white;
+  font-size: 70px;
+  text-shadow: #000 4px 4px 2px;
 }
 
 .wiz-container 
@@ -43,10 +62,12 @@ body
     position: relative;
     z-index: 75;
     height:40px;
+    border: 1px solid #DDD;
 }
 
 .wiz-content
 {
+    padding: 26px;
     height:500px;
     background: url('/public/images/fancy_deboss.png');
 }
@@ -73,66 +94,65 @@ body
 
 .wiz-slide
 {
-    width:939px;
+    width:889px;
     height:500px;
     color: black;
 }
 
 .single-field-form, .yes-no-form
 {
-    margin-top:180px;
-    margin-left:165px;
+    margin: 180px auto;
+    width: 510px;
+}
+
+.gldp-android {
+  z-index: 10000;
+}
+
+.alert-message {
+  margin-bottom: 5px;
+}
+
+.field-error {
+  float: right;
+  color: red;
+  display: none;
+}
+
+small {
+  font-style: italic;
+}
+
+.date-text {
+  font-size: 20px;
+  color: #555;
+}
+
+input
+{
+  width: 240px;
 }
 
 input.xlarge
 {
     width:500px;
     height:50px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -o-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -khtml-border-radius: 15px;
-    border-radius: 15px;
-    float:left;
     font-size:3.5em;
+    margin-bottom: 5px;
 }
 
-.wiz-slide .btn 
-{
-    text-align:center;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -o-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -khtml-border-radius: 15px;
-    border-radius: 15px;
+.expiration {
+  float: left;
+  width: 60px;
 }
 
-.div-checkbox {
-    width: 50px;
-    height:35px;
-    color: #000;
-    padding-top:15px;
-    text-align:center;
-    font-size:3.5em;
-    background-color:#FFF;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -o-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -khtml-border-radius: 15px;
-    border-radius: 15px;
-    float:left;
+.remove {
+  top: 10px;
+  position: relative;
 }
 
-.yes-no-form{
-    margin-left:230px;
-}
-
-.yes-no-form div{
-    width:400px;
-    text-align:center;
+.delivery {
+  width: 428px;
 }
 
 .left{
@@ -141,11 +161,6 @@ input.xlarge
 
 .right{
     float:right;
-}
-
-#randomNextYes{
-    margin-left:25px;
-    margin-right:40px;
 }
 
 .center{

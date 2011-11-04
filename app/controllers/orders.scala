@@ -78,7 +78,6 @@ object Orders extends Controller {
               
               var strDate = delivery("date").toString().substring(0,10)
               var deliveryDate = new SimpleDateFormat("yyyy-MM-dd").parse(strDate)
-              deliveryDate.setYear(deliveryDate.getYear())
               deliveryDate = new Timestamp(deliveryDate.getTime())
               System.out.println(priceScheme)
               var newDelivery = Delivery(NotAssigned,
@@ -101,7 +100,6 @@ object Orders extends Controller {
             })
             
           }
-        }      
-        girlfriend.html.index("instaRomeo | Just Add Us")
+        }
     }
 }

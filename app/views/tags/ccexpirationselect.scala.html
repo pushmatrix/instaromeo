@@ -1,0 +1,16 @@
+@(label:String = "", name:String = "", value:String = "")
+<div class="clearfix">
+  <label for="@name">@label</label>
+  <div class="input">
+    <select name="@name" class="expiration">
+      @for(month <- 1 to 12) {
+        <option value=@month>@month</option>
+      }
+    </select>
+    <select name="@name" class="expiration">
+      @for(year <- 2011 to 2017) {
+        <option value=@year>@year</option>
+      }
+    </select>
+  </div>
+</div>

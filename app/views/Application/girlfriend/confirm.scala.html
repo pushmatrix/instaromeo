@@ -1,0 +1,20 @@
+@import views.tags.html._
+<div id="checkoutForm" class="container">
+  <div class="page-header">
+    <h1>She'll get flowers on the following days</h1>
+  </div>
+
+  <h1>Checkout details</h1>
+  You're about to purchase the following:
+
+  <form>
+    @textinput("Credit Card Number", "cardNumber")
+    @textinput("CVC", "cvc")
+  </form>
+  <div id="purchase" class="btn info">
+      Purchase
+  </div>
+  <div id="purchaseLoading" style="display: none">
+      Purchasing <img src="@asset("public/images/spinner.gif")"/>
+  </div>
+</div>

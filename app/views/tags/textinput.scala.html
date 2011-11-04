@@ -1,7 +1,10 @@
 @(label:String = "", name:String = "", value:String = "")
 <div class="clearfix">
   <label for="@name">@label</label>
+  <div class="field-error">
+    oh shit
+  </div>
   <div class="input">
-    <input name="@name" size="30" type="text" value="@value"/>
+    <input name="@name" class="@name" size="30" type="text" value="@value"/>
   </div>
 </div>

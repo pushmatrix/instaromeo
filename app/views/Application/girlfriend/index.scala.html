@@ -4,7 +4,7 @@
   	<img src="@asset("public/images/female.png")"/>
   	<img id="prog-ico-anniversary" class="inactive" src="@asset("public/images/anniversary.png")"/>
   	<img id="prog-ico-birthday" class="inactive" src="@asset("public/images/birthday.png")"/>
-  	<img id="prog-ico-surprise" class="inactive" src="@asset("public/images/surprise.png")">
+  	<img id="prog-ico-surprise" class="inactive" src="@asset("public/images/everyday.png")">
   	<img id="prog-ico-calendar" class="inactive" src="@asset("public/images/calendar.png")"/>
   	<img id="prog-ico-checkout" class="inactive" src="@asset("public/images/checkout.png")"/>
   
@@ -16,17 +16,22 @@
       <div class="wiz-slide"> @views.Application.girlfriend.html.random()</div>
 	    <div class="wiz-slide"> @views.Application.girlfriend.html.order()</div>
 	    <div class="wiz-slide"> @views.Application.girlfriend.html.address()</div>
-	    <div class="wiz-slide"> @views.Application.girlfriend.html.checkout()</div>
+	    <div class="wiz-slide"> @views.Application.girlfriend.html.billing()</div>
+	    <div class="wiz-slide"> @views.Application.girlfriend.html.confirm()</div>
 	    <div class="wiz-slide"> @views.Application.girlfriend.html.congrats()</div>
     </div>
     
     <script>
     $(function(){
       deliveryTemplate = $("#deliveries .delivery")[0].outerHTML;
-      dateFormat = 'yyyy-MM-dd';
+      dateFormat = 'MMMM dd, yyyy';
+      flowerPrice = 50;
+      maxOrderSize = 7;
+      
       
       instaromeo_order = {
           gfName: "",
+          total: 0,
           deliveries: [],
           addDelivery: function(delivery) {
             var id = 'delivery_' + instaromeo_order.deliveries.length;
@@ -38,10 +43,12 @@
             deliveryHTML.attr('id', id);
             $("#deliveries").append(deliveryHTML[0].outerHTML);
             
+            $(".total").html(this.total += flowerPrice);
+            
             // update the deliveryHTML with the actual node in the dom.
             deliveryHTML = $("#" + id);
             deliveryHTML.fadeIn();
-            if (delivery.type == "surprise" || delivery.type == "birthday" || delivery.type == "anniversary") {
+            if (delivery.type == "everyday" || delivery.type == "birthday" || delivery.type == "anniversary") {
               var datepicker = $("#" + id + " .datepicker");
               datepicker.show();
               // the date picker has to be initialized after the node is in the dom
@@ -55,6 +62,7 @@
           removeDelivery: function(id) {
             instaromeo_order.deliveries[id] = null;
             $("#delivery_" + id).fadeOut();
+            $(".total").html(this.total -= flowerPrice);
           },
           addDeliveryFromDatePicker: function(delivery_type, datepicker_id){
                var delivery = {
@@ -80,10 +88,14 @@
       
       $('#add-delivery').click(function(){
         var delivery = {
-          type: 'surprise',
+          type: 'everyday',
           date: new Date()
         };
         instaromeo_order.addDelivery(delivery);
+        if (instaromeo_order.deliveries.length >= maxOrderSize) {
+          $(this).hide();
+          $("#max-orders").show();
+        }
       });
       
       slider = $('#slider1').bxSlider({
@@ -91,17 +103,30 @@
         controls: false
       });
       
+      
+       $('#nameNext').click(function() {
+         instaromeo_order.gfName = $("#gfname").val();
+         $(".recipientName").val(instaromeo_order.gfName);
+       });
+       
+       
        $('.next').click(function(){
-            slider.goToNextSlide();
-            $(".inactive").first().removeClass("inactive");
-            return false;
+         slider.goToNextSlide();
+         $(".inactive").first().removeClass("inactive");
+         return false;
+       });
+
+        $('.skip').click(function(){
+          slider.goToNextSlide();
+          $(".inactive").first().removeClass("inactive");
+          return false;
         });
         
         $("#annivNext").click(function(){
             instaromeo_order.addDeliveryFromDatePicker("anniversary", "anniversary");
         });
         
-       // slider.goToSlide(6);
+        //slider.goToSlide(4);
         $("#birthdayNext").click(function(){
             instaromeo_order.addDeliveryFromDatePicker("birthday", "birthday");
         });
@@ -115,11 +140,11 @@
         });
         
         $("#purchase").click(function() {
-        //  $(this).hide();
+          $("#billingForm .buttons").hide();
           $("#purchaseLoading").show();
           var data = $("#senderInfo, #recipientInfo").serialize();
           data += "&deliveries=" + JSON.stringify(instaromeo_order.deliveries);
-          $.post("/orders", data).success(function(){
+          $.post("/orders", data).success(function() {
           //  slider.goToNextSlide();
           });
         });
@@ -136,10 +161,10 @@
               });
         }
         
-        $("#modifyOrder").click(function() {
+        $(".modifyOrder").click(function() {
           slider.goToSlide(4);
         });
-        $("#modifyAddress").click(function() {
+        $(".modifyAddress").click(function() {
           slider.goToSlide(5);
         });
         $(".datepicker").each(function(){
@@ -158,6 +183,8 @@
           $(".remove").live('click',function(ev){
             ev.preventDefault();
             instaromeo_order.removeDelivery($(this).parent().attr("id").split("_")[1]);
+            $("#add-delivery").show();
+            $("#max-orders").hide();
           });
           
           $(".datepicker").live('keyup',function(){
