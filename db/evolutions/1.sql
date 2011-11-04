@@ -48,6 +48,7 @@ CREATE TABLE Delivery (
     priceScheme bigint references PriceScheme(id),
     orderPlaced boolean NOT NULL,
     amountSpent double precision NOT NULL,
+    deliveryAddress bigint references Address(id),
     PRIMARY KEY (id)
 );
  

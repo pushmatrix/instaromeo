@@ -15,7 +15,8 @@ case class Delivery(
     @Required @InFuture deliveryDate: Date,
     @Required priceScheme: Long,
     @Required orderPlaced: Boolean,
-    @Required amountSpent: Double   
+    @Required amountSpent: Double,   
+    @Required deilvieryAddress: Long
 )
 
 object Delivery extends Magic[Delivery]

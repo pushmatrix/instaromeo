@@ -15,7 +15,7 @@ object Orders extends Controller {
 
     def create() = {
         
-        var newAddress = Address(NotAssigned,
+        var senderAddress = Address(NotAssigned,
                 params.get("senderAddress1"),
                 Option(params.get("senderAddress2")),
                 params.get("senderCity"),
@@ -24,11 +24,28 @@ object Orders extends Controller {
                 params.get("senderZip"))
 
 
-        Validation.valid("Address", newAddress)
+        Validation.valid("Address", senderAddress)
         if(validation.hasErrors) {
             Logger.info(validation.errorsMap().toString())
         } else {
-            newAddress = Address.create(newAddress).get
+            senderAddress = Address.create(senderAddress).get
+            println("saving sender address")
+        }
+        
+        var recipientAddress = Address(NotAssigned,
+                params.get("recipientAddress1"),
+                Option(params.get("recipientAddress2")),
+                params.get("recipientCity"),
+                params.get("recipientState"),
+                params.get("recipientCountry"),
+                params.get("recipientZip"))
+
+
+        Validation.valid("Address", recipientAddress)
+        if(validation.hasErrors) {
+            Logger.info(validation.errorsMap().toString())
+        } else {
+            recipientAddress = Address.create(recipientAddress).get
             println("saving sender address")
         }
 
@@ -36,7 +53,7 @@ object Orders extends Controller {
                 params.get("senderEmail"),
                 params.get("senderName"),
                 params.get("senderPhone"),
-                newAddress.id(),
+                senderAddress.id(),
                 params.get("recipientName"),
                 params.get("recipientPhone"))
 
@@ -71,7 +88,8 @@ object Orders extends Controller {
                          deliveryDate, /* use delivery("date") to access the date from json*/
                          priceScheme.get.id(),
                          false,
-                         0.0)
+                         0.0,
+                         recipientAddress.id())
               System.out.println("wefwe")  
               Validation.valid("Delivery", newDelivery)
               if(validation.hasErrors) {
