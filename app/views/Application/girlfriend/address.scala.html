@@ -6,13 +6,13 @@
   <div class="row">
     <div class="span8">
       <form id="recipientInfo">
-        @textinput("Name", "recipientName", "Daphne")
-        @textinput("Phone", "recipientPhone", "6132539834")
-        @textinput("Address 1", "recipientAddress1", "200 Daphne St")
-        @textinput("City", "city", "Ottawa")
-        @countryselect("Country", "country")
-        @stateselect("Province/State", "state")
-        @textinput("Postal Code/Zip", "zip", "K3MB4M")
+        @textinput("Name", "recipientName", "required")
+        @textinput("Phone", "recipientPhone", "required number", "minlength=10 maxlength=10")
+        @textinput("Address 1", "recipientAddress1", "required")
+        @textinput("City", "recipientCity", "required")
+        @countryselect("Country", "recipientCountry")
+        @stateselect("Province/State", "recipientState")
+        @textinput("Postal Code/Zip", "recipientZip", "required", "minlength=2 maxlength=6")
 
       </form>
     </div>

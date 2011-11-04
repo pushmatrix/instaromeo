@@ -17,7 +17,6 @@
 	    <div class="wiz-slide"> @views.Application.girlfriend.html.order()</div>
 	    <div class="wiz-slide"> @views.Application.girlfriend.html.address()</div>
 	    <div class="wiz-slide"> @views.Application.girlfriend.html.billing()</div>
-	    <div class="wiz-slide"> @views.Application.girlfriend.html.confirm()</div>
 	    <div class="wiz-slide"> @views.Application.girlfriend.html.congrats()</div>
     </div>
     
@@ -55,22 +54,35 @@
               initDatePicker(datepicker, function(target, newDate)
               {
                 target.parent().find(".date-text").text(newDate.toString(dateFormat));
+                delivery.date = newDate;
               });
             }
     
           },
           removeDelivery: function(id) {
-            instaromeo_order.deliveries[id] = null;
-            $("#delivery_" + id).fadeOut();
-            $(".total").html(this.total -= flowerPrice);
+            if (instaromeo_order.deliveries.length >= 2) {
+              instaromeo_order.deliveries[id] = null;
+              $("#delivery_" + id).fadeOut();
+              $(".total").html(this.total -= flowerPrice);
+            } else {
+              alert("You must have at least one date picked.");
+            }
           },
           addDeliveryFromDatePicker: function(delivery_type, datepicker_id){
-               var delivery = {
-                   type: delivery_type,
-                   date: Date.parse($("#" + datepicker_id).val())
-               };
+            var dateStr = $("#" + datepicker_id).val();
+            if (dateStr) {
+              try {
+                var delivery = {
+                  type: delivery_type,
+                  date: Date.parse($("#" + datepicker_id).val())
+                };
+                this.addDelivery(delivery);  
+              } catch(err) {
+                
+              }
+    
+            }
 
-               this.addDelivery(delivery);      
           },
           addRandomDelivery: function(){
               var date = Date.parse(Math.ceil(Math.random()*12) + "/" + Math.ceil(Math.random()*29));
@@ -107,10 +119,15 @@
        $('#nameNext').click(function() {
          instaromeo_order.gfName = $("#gfname").val();
          $(".recipientName").val(instaromeo_order.gfName);
+         $("#nameForm form").validate();
        });
        
        
        $('.next').click(function(){
+         var form = $(this).parents(".wiz-slide").find("form");
+         if(form.length > 0 && !form.validate().form()) {
+           return false;
+         }
          slider.goToNextSlide();
          $(".inactive").first().removeClass("inactive");
          return false;
@@ -140,12 +157,20 @@
         });
         
         $("#purchase").click(function() {
+          var form = $(this).parents(".wiz-slide").find("form");
+          if(form.length > 0 && !form.validate().form()) {
+            return false;
+          }
           $("#billingForm .buttons").hide();
           $("#purchaseLoading").show();
           var data = $("#senderInfo, #recipientInfo").serialize();
+          instaromeo_order.deliveries = instaromeo_order.deliveries.filter(function(e){return e!=null})
           data += "&deliveries=" + JSON.stringify(instaromeo_order.deliveries);
           $.post("/orders", data).success(function() {
-          //  slider.goToNextSlide();
+            slider.goToNextSlide();
+          }).error(function() {
+            // something went wrong, but let's pretend it didn't :p
+            slider.goToNextSlide();
           });
         });
         
@@ -201,12 +226,12 @@
           });
 
           var typewatch = (function(){
-                var timer = 0;
-                return function(callback, ms){
-                    clearTimeout (timer);
-                    timer = setTimeout(callback, ms);
-                }  
-                })();
+            var timer = 0;
+            return function(callback, ms){
+              clearTimeout (timer);
+              timer = setTimeout(callback, ms);
+            }  
+            })();
         
     });
     </script>

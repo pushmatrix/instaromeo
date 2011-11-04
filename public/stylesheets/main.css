@@ -105,6 +105,10 @@ body
     width: 510px;
 }
 
+#nameForm form {
+  margin-bottom: 0px;
+}
+
 .gldp-android {
   z-index: 10000;
 }
@@ -113,10 +117,15 @@ body
   margin-bottom: 5px;
 }
 
-.field-error {
-  float: right;
+input.error {
+  border: 1px solid red;
+}
+
+label.error {
   color: red;
-  display: none;
+  width: 300px;
+  text-align: left;
+  padding: 0px;
 }
 
 small {
@@ -139,6 +148,10 @@ input.xlarge
     height:50px;
     font-size:3.5em;
     margin-bottom: 5px;
+}
+
+.single-field-form .input {
+  margin-left: 0px;
 }
 
 .expiration {

@@ -14,7 +14,7 @@ import java.util.{Date}
 object Orders extends Controller {
 
     def create() = {
-        
+        var errors = ""
         var senderAddress = Address(NotAssigned,
                 params.get("senderAddress1"),
                 Option(params.get("senderAddress2")),
@@ -26,7 +26,7 @@ object Orders extends Controller {
 
         Validation.valid("Address", senderAddress)
         if(validation.hasErrors) {
-            Logger.info(validation.errorsMap().toString())
+            errors += validation.errorsMap().toString();
         } else {
             senderAddress = Address.create(senderAddress).get
             println("saving sender address")
@@ -43,10 +43,10 @@ object Orders extends Controller {
 
         Validation.valid("Address", recipientAddress)
         if(validation.hasErrors) {
-            Logger.info(validation.errorsMap().toString())
+            errors += validation.errorsMap().toString();
         } else {
             recipientAddress = Address.create(recipientAddress).get
-            println("saving sender address")
+            println("saving recipient address")
         }
 
         var newOrder = FlowerOrder(NotAssigned,
@@ -59,7 +59,7 @@ object Orders extends Controller {
 
         Validation.valid("FlowerOrder", newOrder)
         if(validation.hasErrors) {
-            Logger.info(validation.errorsMap().toString())
+            errors += validation.errorsMap().toString();
         } else {
             newOrder = FlowerOrder.create(newOrder).get
             println("saving the order")
@@ -89,16 +89,15 @@ object Orders extends Controller {
                          false,
                          0.0,
                          recipientAddress.id())
-              System.out.println("wefwe")  
               Validation.valid("Delivery", newDelivery)
               if(validation.hasErrors) {
-                  Logger.info(validation.errorsMap().toString())
+                  errors += validation.errorsMap().toString();
               } else {
                   newDelivery = Delivery.create(newDelivery).get
                   println("saving delivery")
               }
             })
-            
+            errors
           }
         }
     }
