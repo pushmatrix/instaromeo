@@ -1,7 +1,0 @@
-- !!models.PriceScheme
-    id:             !!Id[Long] 1
-    name:           Test Scheme
-    chargePrice:    64.95
-    maxSpend:       60.00
-    minSpend:       40.00
-  

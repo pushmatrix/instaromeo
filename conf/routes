@@ -6,7 +6,7 @@
 GET     /                                       Application.index
 
 # Ignore favicon requests
-GET     /favicon.ico                            404
+GET     /favicon.ico                            Application.http404
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
@@ -14,4 +14,5 @@ GET     /public/                                staticDir:public
 POST    /orders                                 Orders.create
 
 # Catch all
-*       /{controller}/{action}                  {controller}.{action}
+*       /{junk}                                 Application.http404
+
