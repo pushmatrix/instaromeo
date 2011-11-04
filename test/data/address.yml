@@ -6,3 +6,12 @@
     state:          ON
     country:        CA
     zip:            H0H0H0
+    
+- !!models.Address
+    id:             !!Id[Long] 2
+    address1:       987 Fake Street
+    address2:       
+    city:           Noweheres Ville
+    state:          WA
+    country:        US
+    zip:            98765

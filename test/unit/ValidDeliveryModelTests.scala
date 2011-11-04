@@ -48,7 +48,8 @@ class ValidDeliveryModelTests extends UnitFlatSpec with ShouldMatchers with Befo
             timestamp,
             1,
             false,
-            0.0
+            0.0,
+            2
         )
         
         Validation.valid("Delivery", testDelivery)
@@ -80,7 +81,8 @@ class ValidDeliveryModelTests extends UnitFlatSpec with ShouldMatchers with Befo
             timestamp,
             1,
             false,
-            0.0
+            0.0,
+            2
         )
         
         Validation.valid("Delivery", testDelivery)

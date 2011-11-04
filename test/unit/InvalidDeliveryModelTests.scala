@@ -49,7 +49,8 @@ class InvalidDeliveryModelTests extends UnitFlatSpec with ShouldMatchers with Be
             timestamp,
             1,
             false,
-            0.0
+            0.0,
+            2
         )
         
         Validation.valid("Delivery", testDelivery)
@@ -75,7 +76,8 @@ class InvalidDeliveryModelTests extends UnitFlatSpec with ShouldMatchers with Be
             timestamp,
             1,
             false,
-            0.0
+            0.0,
+            2
         )
         
         Validation.valid("Delivery", testDelivery)
@@ -96,7 +98,8 @@ class InvalidDeliveryModelTests extends UnitFlatSpec with ShouldMatchers with Be
             timestamp,
             1,
             false,
-            0.0
+            0.0,
+            2
         )
         
         Validation.valid("Delivery", testDelivery)
@@ -117,7 +120,8 @@ class InvalidDeliveryModelTests extends UnitFlatSpec with ShouldMatchers with Be
             timestamp,
             1,
             false,
-            0.0
+            0.0,
+            2
         )
         
         Validation.valid("Delivery", testDelivery)
@@ -138,7 +142,8 @@ class InvalidDeliveryModelTests extends UnitFlatSpec with ShouldMatchers with Be
             timestamp,
             5,
             false,
-            0.0
+            0.0,
+            2
         )
         
         Validation.valid("Delivery", testDelivery)
@@ -164,7 +169,8 @@ class InvalidDeliveryModelTests extends UnitFlatSpec with ShouldMatchers with Be
             null,
             1,
             false,
-            0.0
+            0.0,
+            2
         )
         
         Validation.valid("Delivery", testDelivery)
