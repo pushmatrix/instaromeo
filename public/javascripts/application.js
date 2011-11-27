@@ -99,6 +99,19 @@ $(document).ready(function(){
      controls: false
    });
    
+   $('#gfname').keypress(function(e){
+       var code = (e.keyCode ? e.keyCode : e.which);
+        if(code == 13) { //Enter keycode
+            $(this).next().focus();
+            $('#nameNext').trigger('click');
+            var form = $(this).parents(".wiz-slide").find("form");
+            if(form.length > 0 && !form.validate().form()) {
+                return false;
+            }
+            $('.btn').trigger('click');
+            return false;
+        }
+   });
    
     $('#nameNext').click(function() {
       instaromeo_order.gfName = $("#gfname").val();
