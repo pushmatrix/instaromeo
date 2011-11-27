@@ -109,7 +109,7 @@ $(document).ready(function(){
             if(form.length > 0 && !form.validate().form()) {
                 return false;
             }
-            $('.btn').trigger('click');
+            $('#nameNext.btn').trigger('click');
             return false;
         }
    });
