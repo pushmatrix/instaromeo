@@ -47,6 +47,7 @@ $(document).ready(function(){
          if (instaromeo_order.deliveries.length >= 2) {
            instaromeo_order.deliveries[id] = null;
            $("#delivery_" + id).fadeOut();
+           $("#delivery_" + id).remove();
            $(".total").html(this.total -= flowerPrice);
          } else {
            alert("You must have at least one date picked.");
@@ -203,6 +204,7 @@ $(document).ready(function(){
      });
 
        $(".remove").live('click',function(ev){
+         
          ev.preventDefault();
          instaromeo_order.removeDelivery($(this).parent().attr("id").split("_")[1]);
          instaromeo_order.deliveries = instaromeo_order.deliveries.filter(function(e){return e!=null});
