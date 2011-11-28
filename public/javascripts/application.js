@@ -207,7 +207,7 @@ $(document).ready(function(){
          
          ev.preventDefault();
          instaromeo_order.removeDelivery($(this).parent().attr("id").split("_")[1]);
-         instaromeo_order.deliveries = instaromeo_order.deliveries.filter(function(e){return e!=null});
+         //instaromeo_order.deliveries = instaromeo_order.deliveries.filter(function(e){return e!=null});
          $("#add-delivery").show();
          $("#max-orders").hide();
        });
