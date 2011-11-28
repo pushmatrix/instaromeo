@@ -11,10 +11,14 @@ import java.text.SimpleDateFormat;
 import java.sql.Timestamp
 import java.util.{Date}
 
+//orders controller
+
 object Orders extends Controller {
 
+    //Create Flower Order Action
     def create() = {
         var errors = ""
+        //Create an address for the sender
         var senderAddress = Address(NotAssigned,
                 params.get("senderAddress1"),
                 Option(params.get("senderAddress2")),
@@ -23,15 +27,16 @@ object Orders extends Controller {
                 params.get("senderCountry"),
                 params.get("senderZip"))
 
-
+        //validate the senders address. Only persist the address if its valid
         Validation.valid("Address", senderAddress)
         if(validation.hasErrors) {
             errors += validation.errorsMap().toString();
         } else {
-            senderAddress = Address.create(senderAddress).get
+            senderAddress = Address.create(senderAddress).get //persist
             println("saving sender address")
         }
         
+         //Create an address for the receiver
         var recipientAddress = Address(NotAssigned,
                 params.get("recipientAddress1"),
                 Option(params.get("recipientAddress2")),
@@ -40,15 +45,16 @@ object Orders extends Controller {
                 params.get("recipientCountry"),
                 params.get("recipientZip"))
 
-
+        //validate the receivers address. Only persist the address if its valid
         Validation.valid("Address", recipientAddress)
         if(validation.hasErrors) {
             errors += validation.errorsMap().toString();
         } else {
-            recipientAddress = Address.create(recipientAddress).get
+            recipientAddress = Address.create(recipientAddress).get //persist
             println("saving recipient address")
         }
-
+        
+        //create a new flower order using the sender's address
         var newOrder = FlowerOrder(NotAssigned,
                 params.get("senderEmail"),
                 params.get("senderName"),
@@ -57,29 +63,30 @@ object Orders extends Controller {
                 params.get("recipientName"),
                 params.get("recipientPhone"))
 
+        //validate the flower order, persist only if valid
         Validation.valid("FlowerOrder", newOrder)
         if(validation.hasErrors) {
             errors += validation.errorsMap().toString();
         } else {
-            newOrder = FlowerOrder.create(newOrder).get
+            newOrder = FlowerOrder.create(newOrder).get //persist
             println("saving the order")
         }
         
+        //parse the json object containing the collection of deliveries. Create a new delivery for each delivery
         JSON.parseFull(params.get("deliveries")) match {
           case Some(x) => {
             var deliveries = x.asInstanceOf[List[Map[String, Any]]]
             System.out.println("Deliveries: " + deliveries)    
             deliveries foreach( (delivery) => {
               /* get the type of the delivery with delivery("type") */
-             
-             
-                
+              
               var priceScheme = PriceScheme.find("name={name}").on("name" -> delivery("type")).first()
               
               var strDate = delivery("date").toString().substring(0,10)
               var deliveryDate = new SimpleDateFormat("yyyy-MM-dd").parse(strDate)
               deliveryDate = new Timestamp(deliveryDate.getTime())
               System.out.println(priceScheme)
+              //create a new delivery
               var newDelivery = Delivery(NotAssigned,
                          newOrder.id(),
                          Option(""),
@@ -89,11 +96,12 @@ object Orders extends Controller {
                          false,
                          0.0,
                          recipientAddress.id())
+              //validate delivery, persist only if valid
               Validation.valid("Delivery", newDelivery)
               if(validation.hasErrors) {
                   errors += validation.errorsMap().toString();
               } else {
-                  newDelivery = Delivery.create(newDelivery).get
+                  newDelivery = Delivery.create(newDelivery).get //persist
                   println("saving delivery")
               }
             })

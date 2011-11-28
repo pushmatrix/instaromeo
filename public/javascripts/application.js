@@ -11,10 +11,12 @@ $(document).ready(function(){
    success = false; //variable to make selenium test assertion easier. It becomes true when an order is placed.
    
    
+   //insta romeao object. Contains functions and attributes for processing orders
    instaromeo_order = {
        gfName: "",
        total: 0,
        deliveries: [],
+       //adds a new delivery to the flower order
        addDelivery: function(delivery) {
          var id = 'delivery_' + instaromeo_order.deliveries.length;
          instaromeo_order.deliveries.push(delivery);
@@ -43,6 +45,7 @@ $(document).ready(function(){
          }
  
        },
+       //removes a delivery from the flower order
        removeDelivery: function(id) {
          if (instaromeo_order.deliveries.length >= 2) {
            instaromeo_order.deliveries[id] = null;
@@ -53,6 +56,7 @@ $(document).ready(function(){
            alert("You must have at least one date picked.");
          }
        },
+       //adds a new delivery by parsing a date picker element in the DOM
        addDeliveryFromDatePicker: function(delivery_type, datepicker_id){
          var dateStr = $("#" + datepicker_id).val();
          if (dateStr) {
@@ -69,6 +73,7 @@ $(document).ready(function(){
          }
 
        },
+       //generates a random delivery within the next year and adds it to the order
        addRandomDelivery: function(){
            var date = Date.parse(Math.ceil(Math.random()*12) + "/" + Math.ceil(Math.random()*29));
            if(date.compareTo(Date.parse("Today")) < 0){
@@ -82,7 +87,7 @@ $(document).ready(function(){
        }
    };
    
-   
+   //bind the add delivery button
    $('#add-delivery').click(function(){
      var delivery = {
        type: 'everyday',
@@ -95,17 +100,20 @@ $(document).ready(function(){
      }
    });
    
+   //creates the slider used for the single page app navigation
    slider = $('#slider1').bxSlider({
      mode: 'fade',
      controls: false
    });
    
+   //bind function to keypress when gdname text box has focus
    $('#gfname').keypress(function(e){
        var code = (e.keyCode ? e.keyCode : e.which);
-        if(code == 13) { //Enter keycode
-            $(this).next().focus();
+        if(code == 13) { //If Enter Key Code 
+            $(this).next().focus(); //DO NOT SUBMIT FORM!
             $('#nameNext').trigger('click');
             var form = $(this).parents(".wiz-slide").find("form");
+            //check if form is valid, if so advance slider
             if(form.length > 0 && !form.validate().form()) {
                 return false;
             }
@@ -114,13 +122,14 @@ $(document).ready(function(){
         }
    });
    
+    //bind function for name next button
     $('#nameNext').click(function() {
       instaromeo_order.gfName = $("#gfname").val();
       $(".recipientName").val(instaromeo_order.gfName);
       $("#nameForm form").validate();
     });
     
-    
+    //bind function for next button
     $('.next').click(function(){
       var form = $(this).parents(".wiz-slide").find("form");
       if(form.length > 0 && !form.validate().form()) {
@@ -131,29 +140,29 @@ $(document).ready(function(){
       return false;
     });
 
+     //bind function for skip button
      $('.skip').click(function(){
        slider.goToNextSlide();
        $(".inactive").first().removeClass("inactive");
        return false;
      });
      
+    //bind function for anniversary next button
      $("#annivNext").click(function(){
          instaromeo_order.addDeliveryFromDatePicker("anniversary", "anniversary");
      });
      
-     //slider.goToSlide(4);
+     //bind function for birthday next button
      $("#birthdayNext").click(function(){
          instaromeo_order.addDeliveryFromDatePicker("birthday", "birthday");
      });
      
+     //bind function for yes button for random delivery question
      $("#randomNextYes").click(function(){
-             instaromeo_order.addRandomDelivery();
+         instaromeo_order.addRandomDelivery();
      });
      
-     $(".div-checkbox").click(function(){
-         toggleCheck("chk-random");
-     });
-     
+     //bind function to purchase button
      $("#purchase").click(function() {
        var form = $(this).parents(".wiz-slide").find("form");
        if(form.length > 0 && !form.validate().form()) {
@@ -172,6 +181,7 @@ $(document).ready(function(){
        });
      });
      
+     //The default configuration for all datepickers
      function initDatePicker(element, onChange) {
        element.glDatePicker(
           {

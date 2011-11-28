@@ -7,6 +7,16 @@ import play.db.anorm.SqlParser._
 import play.db.anorm.defaults._
 import play.data.validation.Annotations._
 
+/*
+
+A domain model for storing address objects. 
+
+The max and min sizes of the model's attributes are derived from the Flower One API.
+
+This is done so that a valid object in our domain can be used to provide valid inputs to the API
+
+*/
+
 case class Address(
     id: Pk[Long], 
     @Required @MaxSize(30) address1: String, 
