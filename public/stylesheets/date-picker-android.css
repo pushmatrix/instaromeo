@@ -85,7 +85,7 @@
 	background-color:#024;
 	color:#fff;
 	border:solid 1px #008faf;
-	cursor:wait;
+	cursor:default;
 }
 
 /* Today */
@@ -107,7 +107,7 @@
 .gldp-android-sat
 {
 	background-color:#000;
-	color:#00afff;
+	color:#fff;
 	border:solid 1px #000;
 	cursor:pointer;
 }
@@ -115,7 +115,7 @@
 .gldp-android-sun
 {
 	background-color:#000;
-	color:#ff4f00;
+	color:#fff;
 	border:solid 1px #000;
 }
 
@@ -134,5 +134,5 @@
 	border:solid 1px #222;
 	color:#666;
 	font-weight:normal;
-	cursor:wait;
+	cursor:default;
 }
