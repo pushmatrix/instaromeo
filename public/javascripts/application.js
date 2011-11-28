@@ -16,6 +16,7 @@ $(document).ready(function(){
        gfName: "",
        total: 0,
        deliveries: [],
+       deliverycount: 0,
        //adds a new delivery to the flower order
        addDelivery: function(delivery) {
          var id = 'delivery_' + instaromeo_order.deliveries.length;
@@ -43,15 +44,17 @@ $(document).ready(function(){
              delivery.date = newDate;
            });
          }
+         instaromeo_order.deliverycount += 1;
  
        },
        //removes a delivery from the flower order
        removeDelivery: function(id) {
-         if (instaromeo_order.deliveries.length >= 2) {
+         if (instaromeo_order.deliverycount >= 2) {
            instaromeo_order.deliveries[id] = null;
            $("#delivery_" + id).fadeOut();
            $("#delivery_" + id).remove();
            $(".total").html(this.total -= flowerPrice);
+           instaromeo_order.deliverycount -= 1;
          } else {
            alert("You must have at least one date picked.");
          }
@@ -94,7 +97,7 @@ $(document).ready(function(){
        date: new Date()
      };
      instaromeo_order.addDelivery(delivery);
-     if (instaromeo_order.deliveries.length >= maxOrderSize) {
+     if (instaromeo_order.deliverycount >= maxOrderSize) {
        $(this).hide();
        $("#max-orders").show();
      }
