@@ -216,6 +216,9 @@ $(document).ready(function(){
            if (Date.parse($(this).val()) !== null)
            {
              var newDate = Date.parse($(this).val());
+             if (newDate.getFullYear() < Date.parse("today").getFullYear()){
+                 newDate.set({year: Date.parse("today").getFullYear()});
+             }
              if(newDate.compareTo(Date.parse("Today")) < 0){
                    newDate.addYears(1);
              }
