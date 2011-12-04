@@ -7,7 +7,7 @@ h1 {
   margin-bottom: 0px;
 }
 
-body 
+body
 {
     background: url('../images/bkg.png');
 }
@@ -34,7 +34,7 @@ body
   text-shadow: #000 4px 4px 2px;
 }
 
-.wiz-container 
+.wiz-container
 {
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
@@ -50,7 +50,7 @@ body
     overflow: hidden;
 }
 
-.wiz-nav 
+.wiz-nav
 {
     background: white url('http://static2.metalabdesign.com/images/screenshots-container-bottom.png') repeat-x top left;
     -moz-border-radius: 0px 0px 7px 7px;
@@ -77,7 +77,7 @@ body
     margin: 0px auto;
     width: 320px;
 }
-.wiz-controls img 
+.wiz-controls img
 {
     width:32px;
     height:32px;
@@ -109,7 +109,7 @@ body
   margin-bottom: 0px;
 }
 
-.gldp-android {
+#-gldp {
   z-index: 10000;
 }
 

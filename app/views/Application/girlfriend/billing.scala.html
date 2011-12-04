@@ -15,13 +15,13 @@
         @textinput("City", "senderCity", "Ottawa", "required")
         @countryselect("Country", "senderCountry")
         @stateselect("Province/State", "senderState")
-        @textinput("Zip Code", "senderZip","required", "minlength=2 maxlength=6")
+        @textinput("Zip Code", "senderZip","required", "minlength=5 maxlength=6")
       </div>
       <div class="span7">
 
         @textinput("Credit Card Number", "cardNumber", "number required", "minlength=16 maxlength=16")
         @ccexpirationselect("Expiration Date")
-        @textinput("CVC", "cvc", "required", "minlength=3 maxlength=3")
+        @textinput("CVC", "cvc", "required number", "minlength=3 maxlength=3")
         <h2 style="text-align: right">Total: $<span class="total">0</span></h2>
         <div class="right buttons">
           <div class="modifyOrder btn">

@@ -9,10 +9,11 @@
         @textinput("Name", "recipientName", "required")
         @textinput("Phone", "recipientPhone", "required number", "minlength=10 maxlength=10")
         @textinput("Address 1", "recipientAddress1", "required")
+        @textinput("Address 2", "recipientAddress2")
         @textinput("City", "recipientCity", "required")
         @countryselect("Country", "recipientCountry")
         @stateselect("Province/State", "recipientState")
-        @textinput("Postal Code/Zip", "recipientZip", "required", "minlength=2 maxlength=6")
+        @textinput("Postal Code/Zip", "recipientZip", "required", "minlength=5 maxlength=6")
 
       </form>
     </div>
